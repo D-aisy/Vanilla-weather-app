@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Weather App</title>
-    <link rel="stylesheet" href="src/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
     <div class="container">
+        <div class="weather-app-wrapper">
+        <div class="weather-app-peramater">
+            <div class="weather-display">
         <h1> 
             Bristol, UK
         </h1>
@@ -22,9 +25,15 @@
         </ul>
         <div class="row">
             <div class="col-6">
-                <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-                alt="sunny"/>
-                2°C | °F
+                <div class="overview">
+                <img 
+                src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+                alt="sunny"
+                class="weather-icon"
+                />
+                <span class="temperature"> 2</span><span class="units">°C | <a href="#">°F</a>
+            </span>
+        </div>
             </div>
             <div class="col-6">
                 <ul>
@@ -38,12 +47,18 @@
                         Wind: 6 mph
                     </li>
                 </ul>
+                </div>  
             </div>
         </div>
-        <small>
-            <a href="https://github.com/D-aisy/Vanilla-weather-app" target="_blank">Open-sourced</a> code by Daisy Cowley
-        </small>
     </div>
+</div>
+        <small>
+            <a href="https://github.com/D-aisy/Vanilla-weather-app" 
+            target="_blank">
+            Open-sourced code</a> 
+            by Daisy Cowley
+        </small>
+    </div>  
 <script src="src/app.js"></script>
 </body>
 </html>
