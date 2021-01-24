@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Weather App</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="src/styles.css">
 </head>
@@ -12,7 +13,7 @@
         <div class="weather-app-wrapper">
         <div class="weather-app-peramater">
             <div class="weather-display">
-        <h1> 
+        <h1 id="city-element"> 
             Bristol, UK
         </h1>
         <ul>
@@ -20,7 +21,9 @@
                 Saturday 10:00
             </li>
             <li>
-                Sunny
+                <span id="forecast">
+                    Sunny
+                </span>
             </li>
         </ul>
         <div class="row">
@@ -31,20 +34,25 @@
                 alt="sunny"
                 class="weather-icon"
                 />
-                <span class="temperature"> 2</span><span class="units">°C | <a href="#">°F</a>
+                <span class="temperature" id="temperature"> 
+                    2</span><span class="units">°C | <a href="#">°F</a>
             </span>
         </div>
             </div>
             <div class="col-6">
                 <ul>
                     <li>
-                        Precipitation: 2%
+                        Precipitation: 
+                        <span id="precipitation"></span>%
                     </li>
                     <li>
-                        Humidity: 89%
+                        Humidity:
+                        <span id="humidity"></span>%
                     </li>
                     <li>
-                        Wind: 6 mph
+                        Wind:
+                        <span id="wind"></span>
+                        mph
                     </li>
                 </ul>
                 </div>  
