@@ -32,8 +32,21 @@ function displayWeatherInformation(response) {
     document.querySelector("#weather-icon").setAttribute("alt", response.data.weather[0].description)
 } 
 
+function search(city) {
 apiKey = "364a702f202dc863a32d2f7ebc07434e"
-city = "Sao Paulo"
 units = "metric"
 apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`
 axios.get(apiUrl).then(displayWeatherInformation);
+}
+
+function searchCity(event) {
+    event.preventDefault()
+    let cityInputValue = document.querySelector("#search-city-input")
+    search(cityInputValue.value);
+}
+
+search("London")
+
+
+let searchForm = document.querySelector("#search-form")
+searchForm.addEventListener("click", searchCity);
