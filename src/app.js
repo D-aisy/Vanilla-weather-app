@@ -54,6 +54,12 @@ function displayFarenheitTemperature(event) {
     let displayFarenheit = (celsius * 9/5) + 32;
     temperatureElement.innerHTML = Math.round(displayFarenheit)
 }
+function displayCelsiusTemperature(event) {
+    event.preventDefault()
+    let temperatureElement = document.querySelector("#temperature")
+    let displayCelsius = celsius;
+    temperatureElement.innerHTML = Math.round(displayCelsius);
+}
 
 search("London")
 
@@ -64,3 +70,6 @@ searchForm.addEventListener("click", searchCity);
 
 let farenheitLink = document.querySelector("#farenheit-link")
 farenheitLink.addEventListener("click", displayFarenheitTemperature)
+
+let celsiusLink = document.querySelector("#celsius-link")
+celsiusLink.addEventListener("click", displayCelsiusTemperature)
