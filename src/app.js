@@ -1,13 +1,6 @@
 function currentDate(timestamp) {
     let date = new Date(timestamp)
-    let hours = date.getHours()
-        if (hours < 10) {
-            hours = `0${hours}`
-        }
-    let minutes = date.getMinutes()
-    if (minutes < 10) {
-        minutes = `0${minutes}`
-    }
+
     let days = [
         "Sunday",
         "Monday",
@@ -18,7 +11,21 @@ function currentDate(timestamp) {
         "Saturday"
     ]
     let day = days[date.getDay()]
-    return `${day} ${hours}:${minutes}`
+    return `${day} ${formatHours(timestamp)}`
+}
+
+function formatHours (timestamp) {
+    let date = new Date(timestamp)
+    let hours = date.getHours()
+        if (hours < 10) {
+            hours = `0${hours}`
+        }
+    let minutes = date.getMinutes()
+    if (minutes < 10) {
+        minutes = `0${minutes}`
+    }
+
+    return `${hours}:${minutes}`
 }
 
 function displayWeatherInformation(response) {
@@ -35,11 +42,35 @@ function displayWeatherInformation(response) {
 
 } 
 
+function displayForecast(response){
+    let forecastElement = document.querySelector("#row-forecast")
+    let forecast = response.data.list[0];
+    console.log(forecast)
+
+    forecastElement.innerHTML = 
+    `<div class="col-2">
+                <h6 class="time">
+                    ${formatHours(forecast.dt * 1000)}
+                </h6>
+                <img
+                src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+                class = "forecast-image"
+              />
+              <div class="forecast-temperature">
+                  ${Math.round(forecast.main.temp_max)}° | ${Math.round(forecast.main.temp_min)}°
+              </div>
+            </div>
+            `
+}
+
 function search(city) {
 apiKey = "364a702f202dc863a32d2f7ebc07434e"
 units = "metric"
 apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`
 axios.get(apiUrl).then(displayWeatherInformation);
+
+apiUrl = `https:api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`
+axios.get(apiUrl).then(displayForecast);
 }
 
 function searchCity(event) {

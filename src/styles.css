@@ -56,3 +56,20 @@ li{
     border: 1px solid #878787;
     border-radius: 7px;
 }
+
+.time{
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.forecast-image {
+    display: block;
+    margin: 0 auto;  
+    padding: 0;
+    line-height: 0;  
+}
+
+.forecast-temperature {
+    text-align: center;
+    line-height: 0;
+}
