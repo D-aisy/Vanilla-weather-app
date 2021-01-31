@@ -24,7 +24,7 @@ li{
 }
 
 .humidity-wind{
-   margin-top: 40px
+   margin-top:
 }
 
 .weather-app-wrapper {
@@ -71,9 +71,12 @@ li{
     margin: 0 auto;  
     padding: 0;
     line-height: 0;  
+    max-width: 60px;
 }
 
 .forecast-temperature {
     text-align: center;
     line-height: 0;
+    font-size: 12px;
 }
+
