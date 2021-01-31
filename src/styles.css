@@ -23,6 +23,10 @@ li{
     
 }
 
+.humidity-wind{
+   margin-top: 40px
+}
+
 .weather-app-wrapper {
     max-width: 600px;
 }
