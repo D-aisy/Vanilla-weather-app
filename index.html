@@ -33,7 +33,7 @@
             </li>
             <li>
                 <span id="forecast">
-                    Sunny
+                    
                 </span>
             </li>
         </ul>
@@ -42,18 +42,24 @@
                 <div class="overview">
                 <img src="" alt="sunny" class="weather-icon" id="weather-icon"/>
                 <span class="temperature" id="temperature"> 
-                    2</span><span class="units"><a href="#" id="celsius-link">°C</a> | <a href="#" id="farenheit-link">°F</a>
+                    </span><span class="units"><a href="#" class="celsius-link" id="celsius-link">°C</a> | <a href="#" class="farenheit-link" id="farenheit-link">°F</a>
             </span>
         </div>
             </div>
             <div class="col-5">
+                <br/>
                 <ul class="humidity-wind">
                     <li>
-                        Humidity:
+                        <strong>
+                            Humidity:
+                        </strong>
                         <span id="humidity"></span>%
                     </li>
+                    <br/>
                     <li>
+                        <strong>
                         Wind:
+                    </strong>
                         <span id="wind"></span>
                         mph
                     </li>
@@ -73,7 +79,9 @@
             <a href="https://github.com/D-aisy/Vanilla-weather-app" 
             target="_blank">
             Open-sourced code</a> 
-            by Daisy Cowley
+            <span class="name">
+                by Daisy Cowley
+            </span>
         </small>
     </div>  
 <script src="src/app.js"></script>
