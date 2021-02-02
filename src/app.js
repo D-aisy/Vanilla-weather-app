@@ -97,6 +97,57 @@ function displayCelsiusTemperature(event) {
     let displayCelsius = celsius;
     temperatureElement.innerHTML = Math.round(displayCelsius);
 }
+function displayLocationForecast(response) {
+    let forecastElement = document.querySelector("#row-forecast")
+    forecastElement.innerHTML = null;
+    let forecast = null;
+
+    for (let index = 0; index < 6; index++) {
+        forecast = response.data.list[index];
+        forecastElement.innerHTML += 
+        `<div class="col-2" >
+                    <h6 class="time">
+                        ${formatHours(forecast.dt * 1000)}
+                    </h6>
+                    <img
+                    src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+                    class = "forecast-image"
+                  />
+                  <div class="forecast-temperature">
+                     <strong>${Math.round(forecast.main.temp_max)}° 
+                      | 
+                      ${Math.round(forecast.main.temp_min)}°
+                      </strong>
+                  </div>
+                </div>
+                `;
+    }
+}
+
+
+function showWeather(response){
+    document.querySelector("#city-element").innerHTML = response.data.name
+    document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp)
+    document.querySelector("#weather-icon").innerHTML = response.data.weather[0].icon
+    
+    console.log(response)
+}
+
+function currentLocation(position){
+    let apiKey = "364a702f202dc863a32d2f7ebc07434e"
+    let longitude = position.coords.longitude
+    let latitude = position.coords.latitude
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
+    
+    axios.get(apiUrl).then(showWeather)
+
+    apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
+    axios.get(apiUrl).then(displayLocationForecast);
+}
+
+function showLocation(){
+    navigator.geolocation.getCurrentPosition(currentLocation)  
+}
 
 search("London")
 
@@ -110,3 +161,6 @@ farenheitLink.addEventListener("click", displayFarenheitTemperature)
 
 let celsiusLink = document.querySelector("#celsius-link")
 celsiusLink.addEventListener("click", displayCelsiusTemperature)
+
+let currentButton = document.querySelector("#current-button")
+currentButton.addEventListener("click", showLocation)
