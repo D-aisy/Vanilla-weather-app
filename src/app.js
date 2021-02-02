@@ -54,7 +54,7 @@ function displayForecast(response){
                         ${formatHours(forecast.dt * 1000)}
                     </h6>
                     <img
-                    src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+                    src= "https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
                     class = "forecast-image"
                   />
                   <div class="forecast-temperature">
@@ -109,7 +109,7 @@ function displayLocationForecast(response) {
                         ${formatHours(forecast.dt * 1000)}
                     </h6>
                     <img
-                    src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+                    src= "https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
                     class = "forecast-image"
                   />
                   <div class="forecast-temperature">
