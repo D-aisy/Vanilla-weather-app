@@ -1,4 +1,5 @@
 function currentDate(timestamp) {
+    
     let date = new Date(timestamp)
 
     let days = [
@@ -74,7 +75,7 @@ units = "metric"
 apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`
 axios.get(apiUrl).then(displayWeatherInformation);
 
-apiUrl = `https:api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`
+apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`
 axios.get(apiUrl).then(displayForecast);
 }
 
