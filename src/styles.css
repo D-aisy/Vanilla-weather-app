@@ -38,6 +38,9 @@ li{
     max-width: 600px;
     background-image: url("https://images.pexels.com/photos/4175158/pexels-photo-4175158.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
     border-radius: 4px;
+    display: block;
+    margin: auto;
+    margin-top: 40px;
 }
 
 .overview {
@@ -91,4 +94,8 @@ li{
 .my-name {
     color: #000;
     opacity: 0.5;
+}
+
+.source-code{
+    text-align: center;
 }
