@@ -36,7 +36,7 @@ function displayWeatherInformation(response) {
     document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
     let localUnixTimestamp = response.data.dt + response.data.timezone;
     document.querySelector("#current-date").innerHTML = currentDate(localUnixTimestamp * 1000);
-    document.querySelector("#weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+    document.querySelector("#weather-icon").setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
     document.querySelector("#weather-icon").setAttribute("alt", response.data.weather[0].description)
 
     celsius = response.data.main.temp;
