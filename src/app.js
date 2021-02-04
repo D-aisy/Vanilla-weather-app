@@ -87,18 +87,21 @@ function searchCity(event) {
     search(cityInputValue.value);
 }
 
+let displayFarenheit = null
+
 function displayFarenheitTemperature(event) {
     event.preventDefault()
     let temperatureElement = document.querySelector("#temperature")
-    let displayFarenheit = (celsius * 9/5) + 32;
+    displayFarenheit = (celsius * 9/5) + 32;
     temperatureElement.innerHTML = Math.round(displayFarenheit)
 }
 function displayCelsiusTemperature(event) {
     event.preventDefault()
     let temperatureElement = document.querySelector("#temperature")
-    let displayCelsius = celsius;
+    displayCelsius = celsius;
     temperatureElement.innerHTML = Math.round(displayCelsius);
 }
+
 function displayLocationForecast(response) {
     let forecastElement = document.querySelector("#row-forecast")
     forecastElement.innerHTML = null;
@@ -126,10 +129,11 @@ function displayLocationForecast(response) {
     }
 }
 
+let celsius = null
+
 function displayForecastHeader(response){
-    let mainTemp = document.querySelector("#temperature")
-    mainTemp.innerHTML = Math.round(response.data.main.temp)
-    document.querySelector("#units").innerHTML = `°C`
+    document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp);
+    
     document.querySelector("#humidity").innerHTML = response.data.main.humidity;
     document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);  
     document.querySelector("#weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
@@ -165,8 +169,6 @@ function showLocation(){
 }
 
 search("London")
-
-let celsius = null
 
 let searchForm = document.querySelector("#search-form")
 searchForm.addEventListener("click", searchCity);
