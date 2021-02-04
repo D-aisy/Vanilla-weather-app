@@ -1,5 +1,4 @@
 function currentDate(timestamp) {
-    
     let date = new Date(timestamp)
 
     let days = [
@@ -35,7 +34,8 @@ function displayWeatherInformation(response) {
     document.querySelector("#forecast").innerHTML = response.data.weather[0].description;
     document.querySelector("#humidity").innerHTML = response.data.main.humidity;
     document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
-    document.querySelector("#current-date").innerHTML = currentDate(response.data.dt * 1000)
+    let localUnixTimestamp = response.data.dt + response.data.timezone;
+    document.querySelector("#current-date").innerHTML = currentDate(localUnixTimestamp * 1000);
     document.querySelector("#weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
     document.querySelector("#weather-icon").setAttribute("alt", response.data.weather[0].description)
 
@@ -49,10 +49,12 @@ function displayForecast(response){
     let forecast = null;
     for (let index = 0; index < 6; index++) {
         forecast = response.data.list[index];
+        let localUnixTimestamp = forecast.dt + response.data.city.timezone;
+
         forecastElement.innerHTML += 
         `<div class="col-2" >
                     <h6 class="time">
-                        ${formatHours(forecast.dt * 1000)}
+                        ${formatHours(localUnixTimestamp * 1000)}
                     </h6>
                     <img
                     src= "https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
@@ -107,7 +109,7 @@ function displayLocationForecast(response) {
         forecastElement.innerHTML += 
         `<div class="col-2" >
                     <h6 class="time">
-                        ${formatHours(forecast.dt * 1000)}
+                    ${formatHours(forecast.dt * 1000)}
                     </h6>
                     <img
                     src= "https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
