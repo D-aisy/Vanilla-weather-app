@@ -25,7 +25,7 @@ function formatHours (timestamp) {
         minutes = `0${minutes}`
     }
 
-    return `${hours}:${minutes}`
+    return `<br/> last updated at ${hours}:${minutes}`
 }
 
 function displayWeatherInformation(response) {
@@ -155,7 +155,7 @@ function currentLocation(position){
     let latitude = position.coords.latitude
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
     
-    axios.get(apiUrl).then(showWeather)
+    axios.get(apiUrl).then(displayWeatherInformation);
 
     apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
     axios.get(apiUrl).then(displayLocationForecast);
