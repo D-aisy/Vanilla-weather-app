@@ -25,7 +25,7 @@ function formatHours (timestamp) {
         minutes = `0${minutes}`
     }
 
-    return `<br/> last updated at ${hours}:${minutes}`
+    return `${hours}:${minutes}`
 }
 
 function displayWeatherInformation(response) {
@@ -35,7 +35,7 @@ function displayWeatherInformation(response) {
     document.querySelector("#humidity").innerHTML = response.data.main.humidity;
     document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
     let localUnixTimestamp = response.data.dt + response.data.timezone;
-    document.querySelector("#current-date").innerHTML = currentDate(localUnixTimestamp * 1000);
+    document.querySelector("#current-date").innerHTML = `last updated: ${currentDate(localUnixTimestamp * 1000)}`;
     document.querySelector("#weather-icon").setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
     document.querySelector("#weather-icon").setAttribute("alt", response.data.weather[0].description)
 
